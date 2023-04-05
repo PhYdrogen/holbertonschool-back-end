@@ -22,6 +22,6 @@ if __name__ == "__main__":
             if task.get("userId") == user_id:
                 TASK_COMPLETED_STATUS = task.get("completed")
                 TASK_TITLE = task.get("title")
-                f.write(f'"{user_id}", "{EMPLOYEE_NAME}", "{TASK_COMPLETED_STATUS}", "{TASK_TITLE}"\n')
+                f.write(f'"{user_id}","{EMPLOYEE_NAME}","{TASK_COMPLETED_STATUS}","{TASK_TITLE}"\n')
 
         
