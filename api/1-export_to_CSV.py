@@ -16,7 +16,7 @@ if __name__ == "__main__":
     LIST_TITLE = []
     TOTAL_NUMBER_OF_TASKS = 0
     NUMBER_OF_DONE_TASKS = 0
-    EMPLOYEE_NAME = ru_json.get('name')
+    EMPLOYEE_NAME = ru_json.get('username')
     with open(f"{user_id}.csv", 'w') as f:
         for task in rt_json:
             if task.get("userId") == user_id:
