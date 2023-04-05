@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
     print(f1 := f"Employee {EMPLOYEE_NAME} is done with tasks", end="")
     print(f2 := f"({NUMBER_OF_DONE_TASKS}/\
-          {TOTAL_NUMBER_OF_TASKS+NUMBER_OF_DONE_TASKS}):")
+{TOTAL_NUMBER_OF_TASKS+NUMBER_OF_DONE_TASKS}):")
     for title in LIST_TITLE:
         print(f"\t {title}")
 
