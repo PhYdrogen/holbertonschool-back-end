@@ -24,9 +24,8 @@ if __name__ == "__main__":
         if not task.get("completed") and task.get("userId") == user_id:
             TOTAL_NUMBER_OF_TASKS += 1
 
-    print(f1 := f"Employee {EMPLOYEE_NAME} is done with tasks", end="")
-    print(f2 := f"({NUMBER_OF_DONE_TASKS}/\
+    print(f"Employee {EMPLOYEE_NAME} is done with tasks", end="")
+    print(f"({NUMBER_OF_DONE_TASKS}/\
 {TOTAL_NUMBER_OF_TASKS+NUMBER_OF_DONE_TASKS}):")
     for title in LIST_TITLE:
         print(f"\t {title}")
-
