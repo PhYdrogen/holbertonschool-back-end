@@ -24,7 +24,6 @@ if __name__ == "__main__":
                 TASK_TITLE = task.get("title")
                 f.write(
                     f'"{user_id}",\
-                    "{EMPLOYEE_NAME}",\
-                    "{TASK_COMPLETED_STATUS}",\
-                    "{TASK_TITLE}"\n')
-
+"{EMPLOYEE_NAME}",\
+"{TASK_COMPLETED_STATUS}",\
+"{TASK_TITLE}"\n')
