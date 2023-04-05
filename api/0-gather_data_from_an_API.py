@@ -20,7 +20,8 @@ if __name__ == "__main__":
         NUMBER_OF_DONE_TASKS = 0
         LIST_TITLE = []
         if user_id == userId:
-            print(f"Employee {user.get('name')} is done with tasks",end="")
+            EMPLOYEE_NAME = user.get('name')
+            print(f"Employee {EMPLOYEE_NAME} is done with tasks",end="")
             for task in rt_json:
                 if task.get("completed") and task.get("userId") == userId:
                     NUMBER_OF_DONE_TASKS += 1
