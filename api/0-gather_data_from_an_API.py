@@ -1,33 +1,39 @@
 #!/usr/bin/python3
-""" using requests for api """
+"""
+Write a Python script that,
+using this REST API, for a given employee ID,
+returns information about his/her TODO list progress.
+"""
+import requests
+import sys
 
-if __name__ == "__main__":
-    import requests
-    from sys import argv
 
+if __name__ == '__main__':
+    """ Format """
 
-    if len(argv) <= 1:
-        exit(1)
-    user_id = int(argv[1])
-
-    ru_json = requests.get(f"https://jsonplaceholder.typicode.com/users/{user_id}").json()
-    rt_json = requests.get("https://jsonplaceholder.typicode.com/todos").json()
-
-    LIST_TITLE = []
-    TOTAL_NUMBER_OF_TASKS = 0
+    TASK_TITLE = []
     NUMBER_OF_DONE_TASKS = 0
-    EMPLOYEE_NAME = ru_json.get('name')
-    for task in rt_json:
-        if task.get("completed") and task.get("userId") == user_id:
-            NUMBER_OF_DONE_TASKS += 1
-            LIST_TITLE.append(task.get("title"))
-        if not task.get("completed") and task.get("userId") == user_id:
+    TOTAL_NUMBER_OF_TASKS = 0
+    """API"""
+    """ EXTRACT USER DATA """
+    emp_id = sys.argv[1]
+    emp_url = "https://jsonplaceholder.typicode.com/users/{}".format(emp_id)
+    extract_employee = requests.get(emp_url).json()
+    EMPLOYEE_NAME = extract_employee.get('name')
+
+    """ EXTRACT TASK """
+    task_url = "https://jsonplaceholder.typicode.com/todos/"
+    extract_task = requests.get(task_url).json()
+
+    for i in extract_task:
+        if i.get('userId') == int(emp_id):
+            if i.get('completed') is True:
+                TASK_TITLE.append(i['title'])
+                NUMBER_OF_DONE_TASKS += 1
             TOTAL_NUMBER_OF_TASKS += 1
 
-    print(f1 := f"Employee {EMPLOYEE_NAME} is done with tasks",end="")
-    print(f2 := f"({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS+NUMBER_OF_DONE_TASKS}):")
-    for title in LIST_TITLE:
-        print(f"\t {title}")
-        
-    with open("student_output", 'w') as f:
-        f.write(f1 + f2)
+    print("Employee {} is done with tasks({}/{}):"
+          .format(EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUMBER_OF_TASKS))
+
+    for i in TASK_TITLE:
+        print("\t {}".format(i))
