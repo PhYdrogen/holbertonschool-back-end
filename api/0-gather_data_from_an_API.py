@@ -10,14 +10,8 @@ if __name__ == "__main__":
         exit(1)
     user_id = int(argv[1])
 
-    r_user = requests.get("https://jsonplaceholder.typicode.com/users")
-    r_todo = requests.get("https://jsonplaceholder.typicode.com/todos")
-
-    # print(ru_json := r_user.json())
-    # print(rt_json := r_todo.json())
-
-    ru_json = r_user.json()
-    rt_json = r_todo.json()
+    ru_json = requests.get("https://jsonplaceholder.typicode.com/users").json()
+    rt_json = requests.get("https://jsonplaceholder.typicode.com/todos").json()
 
     LIST_TITLE = []
     for user in ru_json:
@@ -26,7 +20,7 @@ if __name__ == "__main__":
         NUMBER_OF_DONE_TASKS = 0
         LIST_TITLE = []
         if user_id == userId:
-            print(f"Employee {user.get('name')} is done with task",end="")
+            print(f"Employee {user.get('name')} is done with tasks",end="")
             for task in rt_json:
                 if task.get("completed") and task.get("userId") == userId:
                     NUMBER_OF_DONE_TASKS += 1
