@@ -6,8 +6,6 @@ if __name__ == "__main__":
     from sys import argv
 
 
-    if len(argv) <= 1:
-        exit(1)
     user_id = int(argv[1])
 
     ru_json = requests.get(f"https://jsonplaceholder.typicode.com/users/{user_id}").json()
