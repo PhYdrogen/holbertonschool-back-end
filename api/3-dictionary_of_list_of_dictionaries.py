@@ -28,6 +28,5 @@ if __name__ == "__main__":
                 LIST_TASKS.append(tmp_dict)
 
         userDict[f"{user_id}"] = LIST_TASKS
-    print(userDict)
     with open("todo_all_employees.json", 'w') as f:
         f.write(json.dumps(userDict))
